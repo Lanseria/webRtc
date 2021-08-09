@@ -13,8 +13,8 @@
   </head>
   <body></body>
   <script>
-    var facingMode = "user";
-    var consoleP = (obj) => {
+    const facingMode = "user";
+    const consoleP = (obj) => {
       var rObj = {};
       for (var key in obj) {
         if (typeof obj[key] !== "function") {
@@ -38,7 +38,7 @@
       })
       .then(function (stream) {
         consoleP(stream);
-        var video = document.createElement("video");
+        const video = document.createElement("video");
         video.setAttribute("autoplay", "");
         video.setAttribute("muted", "");
         video.setAttribute("playsinline", "");
@@ -50,7 +50,6 @@
           } else {
             facingMode = "user";
           }
-
           constraints = {
             audio: false,
             video: {
@@ -58,6 +57,7 @@
             },
           };
 
+          consoleP(constraints);
           navigator.mediaDevices
             .getUserMedia(constraints)
             .then(function success(stream) {
