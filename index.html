@@ -65,6 +65,9 @@
       .then(function (stream) {
         consoleP(stream);
         var video = document.querySelector("video");
+        video.setAttribute("autoplay", "");
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
         // Older browsers may not have srcObject
         if ("srcObject" in video) {
           video.srcObject = stream;
@@ -72,9 +75,9 @@
           // Avoid using this in new browsers, as it is going away.
           video.src = window.URL.createObjectURL(stream);
         }
-        video.onloadedmetadata = function (e) {
-          video.play();
-        };
+        // video.onloadedmetadata = function (e) {
+        //   video.play();
+        // };
       })
       .catch(function (err) {
         consoleP(err.name);
